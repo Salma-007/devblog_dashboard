@@ -337,10 +337,7 @@ foreach ($category_stats as $stat) {
                                     <?php foreach($articles as $article): ?>
                                         <tr>
                                             <td>
-                                                <img src="<?= htmlspecialchars($article['featured_image']) ?>" 
-                                                    alt="Thumbnail" 
-                                                    class="img-thumbnail mr-2" 
-                                                    style="width: 50px; height: 50px; object-fit: cover;">
+                                               
                                                 <?= htmlspecialchars($article['title']) ?>
                                             </td>
                                             <td><?= htmlspecialchars($article['author_name']) ?></td>

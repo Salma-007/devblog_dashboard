@@ -17,14 +17,19 @@ function connect_db(){
 }
 
 function get_all_articles($mysqli){
-    $query = "select articles.title, users.username as author_name, categories.name as category_name from articles 
+    $query = "select articles.title, users.username as author_name, categories.name as category_name, views, created_at from articles 
     join categories on articles.category_id= categories.id
     join users on articles.author_id = users.id;";
     $result = mysqli_query($mysqli,$query);
     if($result){
-        return mysqli_fetch_assoc($result);
+        $articles = []; 
+        while ($row = mysqli_fetch_assoc($result)) {
+            $articles[] = $row; 
+        }
+        return $articles; 
     }
 }
+
 
 function get_category_stats($mysqli){
 
