@@ -17,9 +17,11 @@ function connect_db(){
 }
 
 function get_all_articles($mysqli){
-    $query = "select articles.title, users.username as author_name, categories.name as category_name, views, created_at from articles 
+    $query = "select articles.id, articles.title, users.username as author_name, categories.name as category_name,tags.name as tags ,views, created_at from articles 
     join categories on articles.category_id= categories.id
-    join users on articles.author_id = users.id;";
+    join users on articles.author_id = users.id
+    join article_tags on articles.id = article_tags.article_id
+    join tags on article_tags.tag_id = tags.id;";
     $result = mysqli_query($mysqli,$query);
     if($result){
         $articles = []; 
